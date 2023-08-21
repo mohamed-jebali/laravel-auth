@@ -7,5 +7,7 @@ use Illuminate\Http\Request;
 
 class GuestController extends Controller
 {
-    //
+    function home(){
+        return view('guests.home');
+    }
 }
