@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <h1>
+        <h1 class='text-center mb-4'>
             GUEST HOMEPAGE
         </h1>
         <div class="col-md-8">
@@ -17,7 +17,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    Welcome to the Guest Page
                 </div>
             </div>
         </div>
