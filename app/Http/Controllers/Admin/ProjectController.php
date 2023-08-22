@@ -30,7 +30,13 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $newProject = new Project ();
+        $data = $request->validated();
+        $newProject->fill($data);
+        $newProject->save();
 
+
+        return redirect()->route('admin.projects.index')->with('created', $newProject->name);
     }
 
     /**

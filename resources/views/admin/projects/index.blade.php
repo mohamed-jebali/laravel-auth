@@ -3,6 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class='d-flex mb-5'>
+            <a class='btn btn-primary mx-auto' href="{{ route('admin.project.create')}}">
+                            Create new Project
+            </a>
+        </div>
     <div class="row justify-content-md-center justify-content-lg-around">
         @foreach($projects as $project)
         <div class="card p-0 col-12 col-md-5 col-lg-3 mb-3 me-md-4 me-lg-1">
