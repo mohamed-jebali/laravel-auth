@@ -30,15 +30,15 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Project $projects)
+    public function show(Project $project)
     {
-        //
+        return view ('admin.projects.show',compact('project'));
     }
 
     /**

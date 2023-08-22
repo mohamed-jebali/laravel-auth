@@ -21,7 +21,7 @@
                     </a>
                </button>
                <button type="button" class="btn btn-outline-primary hover-text-white">
-                    <a class='text-decoration-none' href="#">
+                    <a class='text-decoration-none' href="{{ route('admin.project.show', $project->id) }}">
                         Show
                     </a>
                 </button>
