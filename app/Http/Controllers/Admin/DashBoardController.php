@@ -11,10 +11,10 @@ class DashBoardController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function home()
     {
         $id = Auth::id();
         $user = Auth::user();
-        return view ('admin.home',compact('id','user'));
+        return view ('admin.projects.home',compact('id','user'));
     }
 }

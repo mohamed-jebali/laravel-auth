@@ -13,8 +13,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $project = Project::all();
-        return view('admin.index',compact('project'));
+        // $projects = Project::all();
+        // return view('admin.projects.index',compact('projects'));
+        return 'hello';
     }
 
     /**
@@ -22,7 +23,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        return view('admin.projects.create');
     }
 
     /**
@@ -36,7 +37,7 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $s)
+    public function show(Project $projects)
     {
         //
     }
@@ -44,7 +45,7 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(s $s)
+    public function edit(Project $projects)
     {
         //
     }
@@ -52,7 +53,7 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $s)
+    public function update(Request $request, Project $projects)
     {
         //
     }
