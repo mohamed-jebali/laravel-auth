@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProjectStoreRequest;
+use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -28,7 +30,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProjectStoreRequest $request)
     {
         $newProject = new Project ();
         $data = $request->validated();
