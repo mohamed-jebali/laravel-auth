@@ -93,4 +93,13 @@ class ProjectController extends Controller
 
         return redirect()->route('admin.projects.index')->with('restored',$project->title);
     }
+
+    public function hardDelete ($id){
+        
+        $project = Project::onlyTrashed()->findOrFail($id);
+        $project->forceDelete();
+
+        return redirect()->route('admin.projects.index')->with('removed',$project->title);
+
+    }
 }

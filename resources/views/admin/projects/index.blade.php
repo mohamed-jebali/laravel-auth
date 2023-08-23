@@ -7,7 +7,7 @@
             <a class='btn btn-primary mx-auto' href="{{ route('admin.projects.create')}}">
                             Create new Project
             </a>
-            <a class='btn btn-secondary mx-auto' href="">
+            <a class='btn btn-secondary mx-auto' href="{{ route('admin.projects.trashed')}}">
                             Trashed
             </a>
         </div>
@@ -27,6 +27,10 @@
              @elseif(session('restored'))
              <div class="col-12 col-md-10 col-lg-11 alert alert-info">
                   {{ session('restored') }}  has been restored 
+             </div>
+             @elseif(session('removed'))
+             <div class="col-12 col-md-10 col-lg-11 alert alert-danger">
+                  {{ session('removed') }}  has been removed from DB 
              </div>
         @endif
         @foreach($projects as $project)
