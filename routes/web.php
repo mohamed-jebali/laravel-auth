@@ -20,6 +20,7 @@ use App\Http\Controllers\Guest\GuestController;
 
 Auth::routes();
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    
     Route::get('/', [ AdminDashboardController::class , 'home'])->name('home');
     Route::resource('/project',  AdminProjectController::class);
 });

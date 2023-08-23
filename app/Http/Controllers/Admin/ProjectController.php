@@ -54,7 +54,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $projects)
     {
-        //
+
     }
 
     /**
@@ -68,8 +68,10 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Project $s)
+    public function destroy(Project $projects)
     {
-        //
+
+        $projects->delete();
+        return redirect()->route('admin.project.index')->with('delete',$projects->name);
     }
 }

@@ -16,7 +16,7 @@ class ProjectSeeder extends Seeder
 {
     for ($i = 0; $i < 50; $i++) { 
         $newProject = new Project ();
-        $newProject->title = $faker->unique()->word();
+        $newProject->title = $faker->word(5,true);
         $newProject->description = $faker->paragraph(80);
         $newProject->slug = $faker->slug();
         $newProject->image = $faker->imageUrl(360, 360, 'projects', true, 'project', true, 'jpg');
