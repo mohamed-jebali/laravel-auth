@@ -9,13 +9,21 @@
             </a>
         </div>
     <div class="row justify-content-md-center justify-content-lg-around">
-        @if(session('create'))
+        @if(session('created'))
              <div class="col-12 col-md-10 col-lg-11 alert alert-success">
-                  {{ session('delete') }}  has been created 
+                  {{ session('created') }}  has been created 
              </div>
              @elseif(session('delete'))
              <div class="col-12 col-md-10 col-lg-11 alert alert-warning">
                   {{ session('delete') }}  has been deleted  
+             </div>
+             @elseif(session('update'))
+             <div class="col-12 col-md-10 col-lg-11 alert alert-primary">
+                  {{ session('update') }}  has been updated  
+             </div>
+             @elseif(session('restored'))
+             <div class="col-12 col-md-10 col-lg-11 alert alert-info">
+                  {{ session('restored') }}  has been restored 
              </div>
         @endif
         @foreach($projects as $project)
@@ -30,7 +38,7 @@
                       @method('DELETE')
             <div class="btn-group btn-group-sm d-flex mx-auto" role="group" aria-label="Small button group">
                <button type="button" class="btn btn-outline-primary hover-text-white">
-                    <a class='text-decoration-none' href="#">
+                    <a class='text-decoration-none' href="{{ route('admin.project.edit', $project) }}">
                       Edit
                     </a>
                </button>

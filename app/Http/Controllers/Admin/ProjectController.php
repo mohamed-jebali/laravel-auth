@@ -38,7 +38,7 @@ class ProjectController extends Controller
         $newProject->save();
 
 
-        return redirect()->route('admin.projects.index')->with('created', $newProject->name);
+        return redirect()->route('admin.project.index')->with('created', $newProject->name);
     }
 
     /**
@@ -54,7 +54,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $projects)
     {
-
+        return view ('admin.projects.edit',compact('projects'));
     }
 
     /**
@@ -62,7 +62,11 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $projects)
     {
-        //
+        $data = $request->validated();
+        $projects->fill($data);
+        $projects->update($data);
+
+        return redirect()->route('admin.projects.index', compact('projects'));
     }
 
     /**

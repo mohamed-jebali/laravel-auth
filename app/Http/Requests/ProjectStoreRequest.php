@@ -23,10 +23,10 @@ class ProjectStoreRequest extends FormRequest
     public function rules() :array
     {
         return [
-            "title" => "min:5|max:30",
-            // "description" => "required|min:10|max:255",
-            // "slug" => "min:10|required",
-            // "image" => "url:http|required|min:10",
+            "title" => "required|min:5|max:30",
+            "description" => "required|min:10|max:255",
+            "slug" => "min:10|required",
+            "image" => "url:https|required|min:10",
         ];
     }
 
