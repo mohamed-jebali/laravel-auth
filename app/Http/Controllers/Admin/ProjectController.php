@@ -38,7 +38,7 @@ class ProjectController extends Controller
         $newProject->save();
 
 
-        return redirect()->route('admin.projects.index')->with('created', $newProject->name);
+        return redirect()->route('admin.projects.index')->with('created', $newProject->title);
     }
 
     /**
@@ -61,22 +61,21 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $projects)
+    public function update(Request $request, Project $project)
     {
-        $data = $request->validated();
-        $projects->fill($data);
-        $projects->update($data);
+        $data = $request->all();
+        $project->update($data);
 
-        return redirect()->route('admin.projects.index', compact('projects'));
+        return redirect()->route('admin.projects.index', compact('project'))->with('update',$project->title);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Project $projects)
+    public function destroy(Project $project)
     {
 
-        $projects->delete();
-        return redirect()->route('admin.projects.index')->with('delete',$projects->name);
+        $project->delete();
+        return redirect()->route('admin.projects.index')->with('delete',$project->title);
     }
 }
