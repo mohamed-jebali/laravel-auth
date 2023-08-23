@@ -38,7 +38,7 @@ class ProjectController extends Controller
         $newProject->save();
 
 
-        return redirect()->route('admin.project.index')->with('created', $newProject->name);
+        return redirect()->route('admin.projects.index')->with('created', $newProject->name);
     }
 
     /**
@@ -52,9 +52,10 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $projects)
+    public function edit(Project $project)
     {
-        return view ('admin.projects.edit',compact('projects'));
+        // @dd($project);
+        return view ('admin.projects.edit',compact('project'));
     }
 
     /**
@@ -76,6 +77,6 @@ class ProjectController extends Controller
     {
 
         $projects->delete();
-        return redirect()->route('admin.project.index')->with('delete',$projects->name);
+        return redirect()->route('admin.projects.index')->with('delete',$projects->name);
     }
 }

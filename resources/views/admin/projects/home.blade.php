@@ -20,7 +20,7 @@
                     {{ __('You are logged in!') }} <br>
                    Welcome {{ $user->name }}
                 </div>
-                <a href="{{ route('admin.project.index') }}">
+                <a href="{{ route('admin.projects.index') }}">
                     index
                 </a>
             </div>

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class='d-flex mb-5'>
-            <a class='btn btn-primary mx-auto' href="{{ route('admin.project.create')}}">
+            <a class='btn btn-primary mx-auto' href="{{ route('admin.projects.create')}}">
                             Create new Project
             </a>
         </div>
@@ -33,17 +33,17 @@
             <h5 class="card-title"><span class='fw-bold'>ID:</span> {{$project->id}}</h5>
             <p class="card-text"><span class='fw-bold'>title: </span>{{$project->title}}</p>
             <div class="row">
-            <form class='delete-button' action="{{ route('admin.project.destroy' , $project) }}" method='POST'>
+            <form class='delete-button' action="{{ route('admin.projects.destroy' , $project) }}" method='POST'>
                       @csrf
                       @method('DELETE')
             <div class="btn-group btn-group-sm d-flex mx-auto" role="group" aria-label="Small button group">
                <button type="button" class="btn btn-outline-primary hover-text-white">
-                    <a class='text-decoration-none' href="{{ route('admin.project.edit', $project) }}">
+                    <a class='text-decoration-none' href="{{ route('admin.projects.edit', $project) }}">
                       Edit
                     </a>
                </button>
                <button type="button" class="btn btn-outline-primary hover-text-white">
-                    <a class='text-decoration-none' href="{{ route('admin.project.show', $project->id) }}">
+                    <a class='text-decoration-none' href="{{ route('admin.projects.show', $project->id) }}">
                         Show
                     </a>
                </button>

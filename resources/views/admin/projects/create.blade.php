@@ -3,7 +3,7 @@
 
 @section('content')
 
-<form action="{{ route('admin.project.store')}}" method='POST' class='col-8 mx-auto'>
+<form action="{{ route('admin.projects.store')}}" method='POST' class='col-8 mx-auto'>
   @csrf
   
   @if ($errors->any())
