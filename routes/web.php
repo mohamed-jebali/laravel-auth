@@ -20,8 +20,8 @@ use App\Http\Controllers\Guest\GuestController;
 
 Auth::routes();
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
-    Route::get('/projects/deleted', [AdminProjectController::class, 'softDelete'])->name('projects.deleted');
-    Route::post('/projects/trashed/{project}', [AdminProjectController::class, 'restore'])->name('projects.trashed');
+    Route::get('/projects/trashed', [AdminProjectController::class, 'softDelete'])->name('projects.trashed');
+    Route::post('/projects/restore/{project}', [AdminProjectController::class, 'restore'])->name('projects.restore');
     Route::get('/', [ AdminDashboardController::class , 'home'])->name('home');
     Route::resource('/projects',  AdminProjectController::class);
 });

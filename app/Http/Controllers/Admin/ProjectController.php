@@ -81,14 +81,14 @@ class ProjectController extends Controller
 
     public function softDelete (){
 
-        return 'trashed';
-        // $project = Project::onlyTrashed();
-        // return view('admin.projects.trashed', compact('project'));
+        $projects = Project::onlyTrashed()->paginate(10);
+        // @dd($projects);
+        return view('admin.projects.trashed', compact('projects'));
 
     }
-    public function restore (Project $project){
+    public function restore ($id){
 
-        $project = Project::withTrashed()->findOrFail($project);
+        $project = Project::withTrashed()->findOrFail($id);
         $project->restore();
 
         return redirect()->route('admin.projects.index')->with('restored',$project->title);
