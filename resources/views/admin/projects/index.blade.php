@@ -7,6 +7,9 @@
             <a class='btn btn-primary mx-auto' href="{{ route('admin.projects.create')}}">
                             Create new Project
             </a>
+            <a class='btn btn-secondary mx-auto' href="">
+                            Trashed
+            </a>
         </div>
     <div class="row justify-content-md-center justify-content-lg-around">
         @if(session('created'))
