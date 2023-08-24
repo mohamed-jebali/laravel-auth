@@ -60,7 +60,9 @@
     </div>
     @endforeach  
     </div>
+    {{ $projects->links() }}
 </div>
+
 @endsection
 
 

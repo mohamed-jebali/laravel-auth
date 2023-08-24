@@ -10,6 +10,7 @@ use App\Http\Requests\ProjectUpdateRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
 class ProjectController extends Controller
 {
     /**
@@ -17,7 +18,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::paginate(15);
         return view('admin.projects.index',compact('projects'));
     }
 
@@ -99,8 +100,7 @@ class ProjectController extends Controller
 
     public function softDelete (){
 
-        $projects = Project::onlyTrashed()->paginate(10);
-        // @dd($projects);
+        $projects = Project::onlyTrashed()->paginate(5);
         return view('admin.projects.trashed', compact('projects'));
 
     }
