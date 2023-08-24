@@ -9,6 +9,7 @@ use App\Http\Requests\ProjectStoreRequest;
 use App\Http\Requests\ProjectUpdateRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 class ProjectController extends Controller
 {
     /**
@@ -42,6 +43,7 @@ class ProjectController extends Controller
             $newProject->image = $img_path;
         }
 
+        $newProject->slug = Str::of("$newProject->id " . $data['title'])->slug('-');
         $newProject->save();
 
 
@@ -51,9 +53,10 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $project)
+    public function show(Project $projects)
     {
-        return view ('admin.projects.show',compact('project'));
+        // dd($projects);
+        return view ('admin.projects.show',compact('projects'));
     }
 
     /**
@@ -77,6 +80,8 @@ class ProjectController extends Controller
             $img_path = Storage::put('uploads/projects', $request['image']);
             $data['image'] = $img_path;
         }
+
+        $data['slug'] = Str::of("$project->id " . $data['title'])->slug('-');
         $project->update($data);
 
         return redirect()->route('admin.projects.index', compact('project'))->with('update',$project->title);
@@ -99,17 +104,17 @@ class ProjectController extends Controller
         return view('admin.projects.trashed', compact('projects'));
 
     }
-    public function restore ($id){
+    public function restore (string $slug){
 
-        $project = Project::withTrashed()->findOrFail($id);
+        $project = Project::withTrashed()->findOrFail($slug);
         $project->restore();
 
         return redirect()->route('admin.projects.index')->with('restored',$project->title);
     }
 
-    public function hardDelete ($id){
+    public function hardDelete (string $slug){
         
-        $project = Project::onlyTrashed()->findOrFail($id);
+        $project = Project::onlyTrashed()->findOrFail($slug);
         Storage::delete($project->image);
         $project->forceDelete();
 

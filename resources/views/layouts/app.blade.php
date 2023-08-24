@@ -23,6 +23,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+        @yield('custom-scripts-tail')
     </div>
 </body>
 </html>

@@ -46,11 +46,11 @@
                     </a>
                </button>
                <button type="button" class="btn btn-outline-primary hover-text-white">
-                    <a class='text-decoration-none' href="{{ route('admin.projects.show', $project->id) }}">
+                    <a class='text-decoration-none' href="{{ route('admin.projects.show', $project ) }}">
                         Show
                     </a>
                </button>
-               <button type="submit" class="btn btn-outline-primary">
+               <button type="submit" class="btn btn-outline-primary delete-button">
                         Delete
                 </button>
             </form>
@@ -61,4 +61,22 @@
     @endforeach  
     </div>
 </div>
+@endsection
+
+
+
+@section('custom-scripts-tail')
+<script>
+  const deleteButtons = document.querySelectorAll('.delete-button');
+
+  deleteButtons.forEach(element => {
+    element.addEventListener('submit', function (event){
+      event.preventDefault();
+      const popUpWindow = window.confirm('Are you sure you want to delete this Project?');
+      if (popUpWindow){
+        this.submit();
+      }
+    });
+  });
+</script>
 @endsection
