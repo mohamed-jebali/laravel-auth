@@ -32,7 +32,7 @@
       <label for="slug" class="form-label">Slug</label>
       <input type="text" class="form-control" id="slug" name="slug" value='{{ $project->slug }}'>
     </div>
-    <button type="submit" class="btn btn-success">Updated</button>
+    <button type="submit" class="btn btn-success">Update</button>
     <button type="reset" class="btn btn-warning">Reset</button>
 
 </form>

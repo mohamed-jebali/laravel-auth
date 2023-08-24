@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectStoreRequest;
+use App\Http\Requests\ProjectUpdateRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 class ProjectController extends Controller
@@ -67,16 +68,16 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(ProjectUpdateRequest $request, Project $project)
     {
         $data = $request->all();
-        $project->update($data);
 
         if ($request->hasFile('image')){
             Storage::delete($project->image);
-            $img_path = Storage::disk('public')->put('uploads/projects', $data['image']);
+            $img_path = Storage::put('uploads/projects', $request['image']);
             $data['image'] = $img_path;
         }
+        $project->update($data);
 
         return redirect()->route('admin.projects.index', compact('project'))->with('update',$project->title);
     }
