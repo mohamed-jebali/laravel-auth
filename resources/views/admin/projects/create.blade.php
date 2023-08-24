@@ -3,7 +3,7 @@
 
 @section('content')
 
-<form action="{{ route('admin.projects.store')}}" method='POST' class='col-8 mx-auto'>
+<form action="{{ route('admin.projects.store')}}" method='POST' class='col-8 mx-auto' enctype="multipart/form-data">
   @csrf
   
   @if ($errors->any())
@@ -21,7 +21,7 @@
     </div>
     <div class="mb-3">
       <label for="image" class="form-label">image</label>
-      <input type="text" class="form-control" id="image" name="image">
+      <input type="file" class="form-control" id="image" name="image">
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Description</label>
