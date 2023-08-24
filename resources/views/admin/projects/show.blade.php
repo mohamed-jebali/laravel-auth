@@ -15,12 +15,12 @@
             <p class="card-text"><span class='fw-bold'>Slug: </span>{{$project->slug}}</p>
             <p class="card-text"><span class='fw-bold'>Description: </span>{{$project->description}}</p>
             <div class="row">
-                <form class='delete-button' action="#" method='POST'>
+                <form class='delete-button' action="{{ route('admin.projects.destroy', $project) }}" method='POST'>
                    @csrf
                    @method('DELETE')
             <div class="btn-group btn-group-sm d-flex mx-auto" role="group" aria-label="Small button group">
                    <button type="button" class="btn btn-outline-primary hover-text-white">
-                    <a class='text-decoration-none' href="#">Edit</a>
+                    <a class='text-decoration-none' href="{{ route('admin.projects.edit', $project) }}">Edit</a>
                    </button>
                       <button type="submit" class="btn btn-outline-primary delete-button">Delete</button>
                   </form>

@@ -24,7 +24,7 @@ class ProjectStoreRequest extends FormRequest
     {
         return [
             "title" => "required|min:5|max:30",
-            "description" => "required|min:10|max:255",
+            "description" => "required|min:10",
             "slug" => "min:10|required",
             "image" => "required|image|mimes:jpeg,png,jpg,gif|max:2048",
         ];
@@ -38,7 +38,6 @@ class ProjectStoreRequest extends FormRequest
             "title.min" => "il titolo deve avere almeno 5 caratteri",
             "description.required" => "la descrizione deve essere inserito obbligatoriamente",
             "description.min" => "la descrizione deve avere almeno 10 caratteri",
-            "description.max" => "la descrizione non puo' avere piu' di 255 caratteri",
             "slug.required" => "la slug deve essere inserita obbligatoriamente",
             "slug.min" => "la slug deve avere almeno 10 caratteri",
             "image.required" => "l'immagine deve essere inserita obbligatoriamente",

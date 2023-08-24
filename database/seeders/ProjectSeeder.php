@@ -6,7 +6,7 @@ use App\Models\Project;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
-
+use Illuminate\Support\Str;
 class ProjectSeeder extends Seeder
 {
     /**
@@ -18,8 +18,10 @@ class ProjectSeeder extends Seeder
         $newProject = new Project ();
         $newProject->title = $faker->word(5,true);
         $newProject->description = $faker->paragraph(80);
-        $newProject->slug = $faker->slug();
         $newProject->image = $faker->imageUrl(360, 360, 'projects', true, 'project', true, 'jpg');
+        $newProject->slug = Str::of($newProject->title)->slug('-');
+        $newProject->save();
+        $newProject->slug = Str::of("$newProject->id " . $newProject->title)->slug('-');
         $newProject->save();
     }
 }
