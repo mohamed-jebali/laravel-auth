@@ -17,19 +17,19 @@
   @endif
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
-      <input type="text" class="form-control" id="title" name="title">
+      <input type="text" class="form-control" id="title" name="title" value="{{ old('title','')}}">
     </div>
     <div class="mb-3">
       <label for="image" class="form-label">image</label>
-      <input type="file" class="form-control" id="image" name="image">
+      <input type="file" class="form-control" id="image" name="image" value="{{ old('image', '')}}">
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Description</label>
-      <input type="text" class="form-control" id="description" name="description">
+      <input type="text" class="form-control" id="description" name="description" value="{{ old('description','')}}">
     </div>
     <div class="mb-3">
       <label for="slug" class="form-label">Slug</label>
-      <input type="text" class="form-control" id="slug" name="slug">
+      <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug', '')}}">
     </div>
     <button type="submit" class="btn btn-primary">Create</button>
     <button type="reset" class="btn btn-warning">Reset</button>

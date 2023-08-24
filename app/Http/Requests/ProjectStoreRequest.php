@@ -35,6 +35,7 @@ class ProjectStoreRequest extends FormRequest
         return [
             "title.required" => "il titolo deve essere inserito obbligatoriamente",
             "title.max" => "il titolo non puo' avere piu' di 30 caratteri",
+            "title.min" => "il titolo deve avere almeno 5 caratteri",
             "description.required" => "la descrizione deve essere inserito obbligatoriamente",
             "description.min" => "la descrizione deve avere almeno 10 caratteri",
             "description.max" => "la descrizione non puo' avere piu' di 255 caratteri",
