@@ -26,7 +26,7 @@ class ProjectStoreRequest extends FormRequest
             "title" => "required|min:5|max:30",
             "description" => "required|min:10|max:255",
             "slug" => "min:10|required",
-            "image" => "url:https|required|min:10",
+            "image" => "required|image|mimes:jpeg,png,jpg,gif|max:2048",
         ];
     }
 
@@ -41,7 +41,9 @@ class ProjectStoreRequest extends FormRequest
             "slug.required" => "la slug deve essere inserita obbligatoriamente",
             "slug.min" => "la slug deve avere almeno 10 caratteri",
             "image.required" => "l'immagine deve essere inserita obbligatoriamente",
-            "image.url" => "l'immagine deve avere un http iniziale nel url",
+            "image.image" => "Il file deve essere un'immagine.",
+            "image.mimes" => "L'immagine deve essere di uno dei seguenti formati: jpg, jpeg, png, bmp, gif, svg, o webp",
+            "image.max" => "L'immagine non può superare 2 MB.",
         ];
     }
 }

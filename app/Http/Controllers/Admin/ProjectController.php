@@ -7,7 +7,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectStoreRequest;
 use Illuminate\Validation\Rule;
-
+use Illuminate\Support\Facades\Storage;
 class ProjectController extends Controller
 {
     /**
@@ -35,6 +35,10 @@ class ProjectController extends Controller
         $newProject = new Project ();
         $data = $request->validated();
         $newProject->fill($data);
+
+        $img_path = Storage::disk('public')->put('uploads/projects', $data['image']);
+        $newProject->image = $img_path;
+
         $newProject->save();
 
 
@@ -65,6 +69,8 @@ class ProjectController extends Controller
     {
         $data = $request->all();
         $project->update($data);
+
+        
 
         return redirect()->route('admin.projects.index', compact('project'))->with('update',$project->title);
     }

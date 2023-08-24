@@ -35,7 +35,11 @@
         @endif
         @foreach($projects as $project)
         <div class="card p-0 col-12 col-md-5 col-lg-3 mb-3 me-md-4 me-lg-1">
-            <img src="{{$project->image}}" class="card-img-top" style="height: 200px" alt="{{$project->title}}">
+          @if(str_starts_with($project->image, 'http'))
+          <img src="{{$project->image}}" class="card-img-top" style="height: 200px" alt="{{$project->title}}">
+          @else
+          <img src="{{ asset('storage/' . $project->image)}}" class="card-img-top" style="height: 200px" alt="{{$project->title}}">
+          @endif
             <div class="card-body">
             <h5 class="card-title"><span class='fw-bold'>ID:</span> {{$project->id}}</h5>
             <p class="card-text"><span class='fw-bold'>title: </span>{{$project->title}}</p>
