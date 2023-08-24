@@ -36,8 +36,10 @@ class ProjectController extends Controller
         $data = $request->validated();
         $newProject->fill($data);
 
-        $img_path = Storage::disk('public')->put('uploads/projects', $data['image']);
-        $newProject->image = $img_path;
+        if ($request->hasFile('image')){
+            $img_path = Storage::disk('public')->put('uploads/projects', $data['image']);
+            $newProject->image = $img_path;
+        }
 
         $newProject->save();
 
@@ -70,7 +72,11 @@ class ProjectController extends Controller
         $data = $request->all();
         $project->update($data);
 
-        
+        if ($request->hasFile('image')){
+            Storage::delete($project->image);
+            $img_path = Storage::disk('public')->put('uploads/projects', $data['image']);
+            $data['image'] = $img_path;
+        }
 
         return redirect()->route('admin.projects.index', compact('project'))->with('update',$project->title);
     }
@@ -103,6 +109,7 @@ class ProjectController extends Controller
     public function hardDelete ($id){
         
         $project = Project::onlyTrashed()->findOrFail($id);
+        Storage::delete($project->image);
         $project->forceDelete();
 
         return redirect()->route('admin.projects.index')->with('removed',$project->title);
