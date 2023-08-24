@@ -3,14 +3,6 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class='d-flex mb-5'>
-            <a class='btn btn-primary mx-auto' href="{{ route('admin.projects.create')}}">
-                            Create new Project
-            </a>
-            <a class='btn btn-secondary mx-auto' href="{{ route('admin.projects.trashed')}}">
-                            Trashed
-            </a>
-        </div>
     <div class="row justify-content-md-center justify-content-lg-around">
         @if(session('created'))
              <div class="col-12 col-md-10 col-lg-11 alert alert-success">
