@@ -32,6 +32,7 @@
 @endsection
 
 
+
 @section('custom-scripts-tail')
 <script>
   const deleteButtons = document.querySelectorAll('.delete-button');

@@ -50,7 +50,7 @@
                         Show
                     </a>
                </button>
-               <button type="submit" class="btn btn-outline-primary delete-button">
+               <button type="submit" class="btn btn-outline-primary delete-button hover-text-white">
                         Delete
                 </button>
             </form>
